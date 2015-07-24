@@ -15,7 +15,7 @@ fdir = "data"
 fname = '-'.join([str(d) for d in date.today().isocalendar()[:2]])
 WEIGHT = re.compile(r"\d+ [g](?!\w)|\d+ lb")
 
-with open(fdir+fname+".tsv", "w") as f:
+with open("%s/%s.tsv" % (fdir, fname), "w") as f:
     for cat in ["Meat", "Produce"]:
         tag = "lclonline/Flyers/Category/%s" % cat
 
