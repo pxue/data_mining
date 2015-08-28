@@ -4,7 +4,7 @@
 import requests, ujson, re
 from datetime import date
 
-flyer_url = 'https://www.loblaws.ca/banners/publication/v1/en_CA/LOB/current/1000/items?start=0&rows=300&tag=%s'
+flyer_url = 'http://www.loblaws.ca/banners/publication/v1/en_CA/LOB/current/1000/items?start=0&rows=300&tag=%s'
 
 headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
@@ -36,3 +36,5 @@ with open("%s/%s.tsv" % (fdir, fname), "w") as f:
                     clean[0].encode("utf-8"),
                     base_unit.encode("utf-8"),
                     cat))
+
+    print "successful write to %s" % fname
