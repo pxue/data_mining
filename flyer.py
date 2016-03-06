@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import requests, ujson, re
+import requests, ujson, re, os
 from datetime import date
 
 flyer_url = 'http://www.loblaws.ca/banners/publication/v1/en_CA/LOB/current/1000/items?start=0&rows=300&tag=%s'
@@ -15,7 +15,7 @@ fdir = "data"
 fname = '-'.join([str(d) for d in date.today().isocalendar()[:2]])
 WEIGHT = re.compile(r"\d+ [g](?!\w)|\d+ lb")
 
-with open("%s/%s.tsv" % (fdir, fname), "w") as f:
+with open("%s/%s/%s.tsv" % (os.getcwd(), fdir, fname), "w") as f:
     for cat in ["Meat", "Produce"]:
         tag = "lclonline/Flyers/Category/%s" % cat
 
