@@ -1,0 +1,8 @@
+{
+  "name": "Slack multi-tool",
+  "description": "",
+  "image": "heroku/python",
+  "repository": "",
+  "keywords": ["python" ],
+  "addons": [ "flask" ]
+}
