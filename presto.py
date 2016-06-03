@@ -27,6 +27,8 @@ def get_balance(username='', password=''):
     response = requests.post(login, data=formData, headers=headers)
     soup = bs(response.text, "html.parser")
 
-    balance = soup.find(id="ctl00_SPWebPartManager1_AFMSCardSummaryWebpart_ctl00_wizardCardSummary_labelDisplayBalance").text
-    #requests.post(slack, data=json.dumps({"text": "Your presto balance is %s" % balance}))
-    return str("Your presto balance is %s" % balance)
+    balance_html = soup.find(id="ctl00_SPWebPartManager1_AFMSCardSummaryWebpart_ctl00_wizardCardSummary_labelDisplayBalance")
+    if balance_html:
+        return str("Your presto balance is %s" % balance_html.text)
+    
+    return "Unable to find your balance"
